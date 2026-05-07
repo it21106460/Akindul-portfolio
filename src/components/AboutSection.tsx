@@ -3,9 +3,9 @@ import { Briefcase, Award, Users } from "lucide-react";
 import profileImg from "@/assets/profile.jpg";
 
 const stats = [
-  { icon: Briefcase, label: "Years Experience", value: "3+" },
-  { icon: Award, label: "Projects Completed", value: "50+" },
-  { icon: Users, label: "Happy Clients", value: "30+" },
+  { icon: Briefcase, label: "Years Experience", value: "2+" },
+  { icon: Award, label: "Projects Completed", value: "10+" },
+  { icon: Users, label: "Happy Clients", value: "9+" },
 ];
 
 const AboutSection = () => {
@@ -46,7 +46,7 @@ const AboutSection = () => {
               Designing <span className="text-gradient">with purpose</span>
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              I'm a passionate Graphic Designer with over 3 years of experience creating compelling visual solutions for brands across multiple industries. My work spans from social media content and product packaging to full brand identities.
+              I'm a passionate Graphic Designer with over 2 years of experience creating compelling visual solutions for brands across multiple industries. My work spans from social media content and product packaging to full brand identities.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-8">
               I've had the privilege of designing real-world products currently available in the market, and I specialize in blending creativity with strategic marketing to produce designs that not only look stunning but also deliver measurable results.

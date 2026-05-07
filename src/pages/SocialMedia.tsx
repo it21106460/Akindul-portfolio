@@ -2,13 +2,19 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ExternalLink, Share2, Heart, MessageCircle, TrendingUp } from "lucide-react";
 import { Link } from "react-router-dom";
 import projectSocial1 from "@/assets/project-social1.jpg";
+import projectProduct1 from "@/assets/socia media 01.jpeg";
+import projectProduct2 from "@/assets/socia media 02.jpeg";
+import projectProduct3 from "@/assets/socia media 03.jpeg";
+import projectProduct4 from "@/assets/socia media 04.jpeg";
+import projectProduct5 from "@/assets/socia media 05.jpeg";
+import projectProduct6 from "@/assets/socia media 06.jpeg";
 
 const socialMediaProjects = [
   {
     id: 1,
     title: "Os Tools Social Media Campaign",
     description: "Start social media design suite for a Hardware brand",
-    image: projectSocial1,
+    image: projectProduct1,
     tags: ["Social Media", "Campaign", "Branding"],
     platform: "Instagram",
     engagement: "12.5K",
@@ -19,7 +25,7 @@ const socialMediaProjects = [
     id: 2,
     title: "Facebook Brand Awareness",
     description: "Comprehensive Facebook marketing campaign with visual content",
-    image: projectSocial1,
+    image: projectProduct2,
     tags: ["Facebook", "Marketing", "Brand Awareness"],
     platform: "Facebook",
     engagement: "8.7K",
@@ -30,7 +36,7 @@ const socialMediaProjects = [
     id: 3,
     title: "Twitter Engagement Strategy",
     description: "Twitter content strategy with engaging visuals",
-    image: projectSocial1,
+    image: projectProduct3,
     tags: ["Twitter", "Strategy", "Content"],
     platform: "Twitter",
     engagement: "15.2K",
@@ -41,7 +47,7 @@ const socialMediaProjects = [
     id: 4,
     title: "LinkedIn Professional Campaign",
     description: "B2B social media campaign for professional audience",
-    image: projectSocial1,
+    image: projectProduct4,
     tags: ["LinkedIn", "B2B", "Professional"],
     platform: "LinkedIn",
     engagement: "6.4K",
@@ -52,7 +58,7 @@ const socialMediaProjects = [
     id: 5,
     title: "TikTok Viral Content",
     description: "Short-form video content for TikTok platform",
-    image: projectSocial1,
+    image: projectProduct5,
     tags: ["TikTok", "Short-form", "Viral"],
     platform: "TikTok",
     engagement: "45.8K",
@@ -63,7 +69,7 @@ const socialMediaProjects = [
     id: 6,
     title: "Pinterest Visual Strategy",
     description: "Visual content strategy for Pinterest marketing",
-    image: projectSocial1,
+    image: projectProduct6,
     tags: ["Pinterest", "Visual", "Strategy"],
     platform: "Pinterest",
     engagement: "7.9K",
@@ -107,7 +113,7 @@ const SocialMedia = () => {
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <Link 
-              to="/"
+              to="https://www.facebook.com/share/1GNEhQrhSP/?mibextid=wwXIfr"
               className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
             >
               <ArrowLeft size={20} />

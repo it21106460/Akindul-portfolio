@@ -1,8 +1,12 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ExternalLink, Package } from "lucide-react";
 import { Link } from "react-router-dom";
-import projectProduct1 from "@/assets/project-product1.jpg";
-import projectProduct2 from "@/assets/project-product2.jpg";
+import projectProduct1 from "@/assets/pro01.jpeg";
+import projectProduct2 from "@/assets/pro2.png";
+import projectProduct3 from "@/assets/pro3.jpeg";
+import projectProduct4 from "@/assets/pro4.jpeg";
+import projectProduct5 from "@/assets/pro5.jpeg";
+import projectProduct6 from "@/assets/pro6.jpeg";
 
 const productDesignProjects = [
   {
@@ -14,7 +18,7 @@ const productDesignProjects = [
   },
   {
     id: 2,
-    title: "Product Stickering Project",
+    title: "Hardware Items Packaging",
     description: "Product sticker design for a Hardware product",
     image: projectProduct2,
     tags: ["Stickers", "Product Design", "Branding"]
@@ -23,28 +27,28 @@ const productDesignProjects = [
     id: 3,
     title: "Hardware Items Packaging",
     description: "Premium product packaging design for Hardware line",
-    image: projectProduct1,
+    image: projectProduct3,
     tags: ["Packaging", "Branding", "Product Design"]
   },
   {
     id: 4,
-    title: "Product Stickering Project",
+    title: "Hardware Items Packaging",
     description: "Product sticker design for a Hardware product",
-    image: projectProduct2,
+    image: projectProduct4,
     tags: ["Stickers", "Product Design", "Branding"]
   },
   {
     id: 5,
     title: "Hardware Items Packaging",
     description: "Premium product packaging design for Hardware line",
-    image: projectProduct1,
+    image: projectProduct5,
     tags: ["Packaging", "Branding", "Product Design"]
   },
   {
     id: 6,
-    title: "Product Stickering Project",
+    title: "Hardware Items Packaging",
     description: "Product sticker design for a Hardware product",
-    image: projectProduct2,
+    image: projectProduct6,
     tags: ["Stickers", "Product Design", "Branding"]
   }
 ];
@@ -83,7 +87,7 @@ const ProductDesign = () => {
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <Link 
-              to="/"
+              to="https://www.facebook.com/share/1GNEhQrhSP/?mibextid=wwXIfr"
               className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
             >
               <ArrowLeft size={20} />
