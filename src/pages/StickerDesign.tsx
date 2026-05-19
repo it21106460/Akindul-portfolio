@@ -1,54 +1,59 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ExternalLink, Palette } from "lucide-react";
 import { Link } from "react-router-dom";
-import projectProduct2 from "@/assets/project-product2.jpg";
+import stick1 from "@/assets/stick1.jpeg";
+import stick2 from "@/assets/stick2.jpeg";
+import stick3 from "@/assets/stick3.jpeg";
+import stick4 from "@/assets/stick4.jpeg";
+import stick5 from "@/assets/stick5.jpeg";
+import stick6 from "@/assets/stick6.jpeg";
 
 const stickerDesignProjects = [
   {
     id: 1,
-    title: "Product Stickering Project",
+    title: "Gas Regulator Sticker",
     description: "Product sticker design for a Hardware product",
-    image: projectProduct2,
+    image: stick1,
     tags: ["Stickers", "Product Design", "Branding"],
     color: "bg-gradient-to-br from-pink-500 to-purple-600"
   },
   {
     id: 2,
-    title: "Brand Sticker Collection",
-    description: "Custom sticker designs for brand promotion",
-    image: projectProduct2,
+    title: "Electric Hoist Sticker",
+    description: "Custom sticker designs ",
+    image: stick2,
     tags: ["Stickers", "Branding", "Marketing"],
     color: "bg-gradient-to-br from-blue-500 to-cyan-600"
   },
   {
     id: 3,
-    title: "Laptop Sticker Series",
-    description: "Creative laptop sticker designs for tech enthusiasts",
-    image: projectProduct2,
+    title: "Chain Hoist Sticker",
+    description: "Custom sticker designs",
+    image: stick3,
     tags: ["Stickers", "Creative", "Tech"],
     color: "bg-gradient-to-br from-green-500 to-teal-600"
   },
   {
     id: 4,
-    title: "Product Label Design",
+    title: "Pressure Washer Sticker Design",
     description: "Professional product labels and stickers",
-    image: projectProduct2,
+    image: stick4,
     tags: ["Labels", "Product Design", "Branding"],
     color: "bg-gradient-to-br from-orange-500 to-red-600"
   },
   {
     id: 5,
-    title: "Event Sticker Pack",
-    description: "Custom stickers for corporate events and conferences",
-    image: projectProduct2,
+    title: "Water Motor Sticker Design",
+    description: "Custom sticker designs",
+    image: stick5,
     tags: ["Events", "Stickers", "Marketing"],
     color: "bg-gradient-to-br from-purple-500 to-pink-600"
   },
   {
     id: 6,
-    title: "Vinyl Sticker Collection",
-    description: "Durable vinyl stickers for outdoor applications",
-    image: projectProduct2,
+    title: "Vaccum Cleaner Sticker Design",
+    description: "Custom sticker designs",
+    image: stick6,
     tags: ["Vinyl", "Outdoor", "Durability"],
     color: "bg-gradient-to-br from-yellow-500 to-orange-600"
   }

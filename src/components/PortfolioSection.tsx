@@ -6,9 +6,10 @@ import projectSocial1 from "@/assets/project-social1.jpg";
 import projectProduct1 from "@/assets/project-product1.jpg";
 import projectBranding1 from "@/assets/project-branding1.jpg";
 import projectProduct2 from "@/assets/project-product2.jpg";
-import projectVideo1 from "@/assets/project-video1.jpg";
+import projectVideo1 from "@/assets/vid1.mp4";
+import projectProduct3 from "@/assets/shop.jpeg";
 
-const categories = ["All", "Social Media", "Product Design", "Branding", "Video"];
+const categories = ["All", "Social Media", "Product Design", "Branding", "Video", "Shop Branding"];
 
 const projects = [
   {
@@ -39,7 +40,13 @@ const projects = [
     title: "Marketing Video Production",
     description: "Promotional video editing and motion graphics for brands",
     category: "Video",
-    image: projectVideo1,
+    video: projectVideo1,
+  },
+  {
+    title: "Shop Branding Collection",
+    description: "Complete shop branding and signage design for retail spaces",
+    category: "Shop Branding",
+    image: projectProduct3,
   },
 ];
 
@@ -53,8 +60,6 @@ const PortfolioSection = () => {
         return "/product-design";
       case "Sticker Design":
         return "/sticker-design";
-      case "Video":
-        return "/video";
       case "Social Media":
         return "/social-media";
       default:
@@ -94,44 +99,103 @@ const PortfolioSection = () => {
         </div>
 
         {/* Grid */}
-        <motion.div layout className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <motion.div layout className="grid md:grid-cols-2 lg:grid-cols-2 gap-6">
           <AnimatePresence mode="popLayout">
             {filtered.map((project) => (
-              <Link
-                key={project.title}
-                to={getCategoryRoute(project.category)}
-                className="block"
-              >
+              project.category === 'Branding' || project.category === 'Video' || project.category === 'Shop Branding' ? (
                 <motion.div
+                  key={project.title}
                   layout
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.3 }}
-                  className="group glass rounded-2xl overflow-hidden cursor-pointer"
+                  className="group glass rounded-2xl overflow-hidden"
                 >
-                <div className="relative overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    loading="lazy"
-                    width={800}
-                    height={800}
-                    className="w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-background/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <div className="w-12 h-12 rounded-full bg-gradient-primary flex items-center justify-center">
-                      <ExternalLink size={20} className="text-primary-foreground" />
+                  <div className="relative overflow-hidden">
+                    {project.video ? (
+                      <video
+                        src={project.video}
+                        className="w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-110"
+                        autoPlay
+                        controls
+                        muted
+                        loop
+                      />
+                    ) : (
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        loading="lazy"
+                        width={800}
+                        height={800}
+                        className={`w-full ${project.category === 'Shop Branding' ? 'h-full' : 'aspect-square'} object-cover transition-transform duration-500 group-hover:scale-110`}
+                      />
+                    )}
+                    <div className="absolute inset-0 bg-background/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      {project.category !== 'Branding' && project.category !== 'Video' && project.category !== 'Shop Branding' && (
+                        <div className="w-12 h-12 rounded-full bg-gradient-primary flex items-center justify-center">
+                          <ExternalLink size={20} className="text-primary-foreground" />
+                        </div>
+                      )}
                     </div>
                   </div>
-                </div>
-                <div className="p-5">
-                  <span className="text-xs text-primary font-medium uppercase tracking-wider">{project.category}</span>
-                  <h3 className="font-display text-lg font-semibold mt-1 text-foreground">{project.title}</h3>
-                  <p className="text-sm text-muted-foreground mt-1">{project.description}</p>
-                </div>
+                  <div className="p-5">
+                    <span className="text-xs text-primary font-medium uppercase tracking-wider">{project.category}</span>
+                    <h3 className="font-display text-lg font-semibold mt-1 text-foreground">{project.title}</h3>
+                    <p className="text-sm text-muted-foreground mt-1">{project.description}</p>
+                  </div>
                 </motion.div>
-              </Link>
+              ) : (
+                <Link
+                  key={project.title}
+                  to={getCategoryRoute(project.category)}
+                  className="block"
+                >
+                  <motion.div
+                    layout
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    transition={{ duration: 0.3 }}
+                    className="group glass rounded-2xl overflow-hidden cursor-pointer"
+                  >
+                    <div className="relative overflow-hidden">
+                      {project.video ? (
+                        <video
+                          src={project.video}
+                          className="w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-110"
+                          autoPlay
+                          controls
+                          muted
+                          loop
+                        />
+                      ) : (
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          loading="lazy"
+                          width={800}
+                          height={800}
+                          className={`w-full ${project.category === 'Shop Branding' ? 'h-full' : 'aspect-square'} object-cover transition-transform duration-500 group-hover:scale-110`}
+                        />
+                      )}
+                      <div className="absolute inset-0 bg-background/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        {project.category !== 'Branding' && project.category !== 'Video' && project.category !== 'Shop Branding' && (
+                          <div className="w-12 h-12 rounded-full bg-gradient-primary flex items-center justify-center">
+                            <ExternalLink size={20} className="text-primary-foreground" />
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                    <div className="p-5">
+                      <span className="text-xs text-primary font-medium uppercase tracking-wider">{project.category}</span>
+                      <h3 className="font-display text-lg font-semibold mt-1 text-foreground">{project.title}</h3>
+                      <p className="text-sm text-muted-foreground mt-1">{project.description}</p>
+                    </div>
+                  </motion.div>
+                </Link>
+              )
             ))}
           </AnimatePresence>
         </motion.div>

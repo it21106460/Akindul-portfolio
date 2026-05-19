@@ -1,52 +1,69 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft, ExternalLink, Package } from "lucide-react";
+import { ArrowLeft, ExternalLink, Package, ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useState, useCallback, useEffect } from "react";
+import useEmblaCarousel from "embla-carousel-react";
 import projectProduct1 from "@/assets/pro01.jpeg";
 import projectProduct2 from "@/assets/pro2.png";
 import projectProduct3 from "@/assets/pro3.jpeg";
 import projectProduct4 from "@/assets/pro4.jpeg";
 import projectProduct5 from "@/assets/pro5.jpeg";
 import projectProduct6 from "@/assets/pro6.jpeg";
+import real1 from "@/assets/real1.jpeg";
+import real2 from "@/assets/real2.jpeg";
+import real3 from "@/assets/real3.jpeg";
+import real4 from "@/assets/real4.jpeg";
+
+const realProductImages = [
+  real1,
+  real2,
+  real3,
+  real4
+];
 
 const productDesignProjects = [
   {
     id: 1,
-    title: "Hardware Items Packaging",
+    title: "Air Bowler Packaging",
     description: "Premium product packaging design for Hardware line",
     image: projectProduct1,
-    tags: ["Packaging", "Branding", "Product Design"]
+    tags: ["Packaging", "Branding", "Product Design"],
+    span: "col-span-2"
   },
   {
     id: 2,
-    title: "Hardware Items Packaging",
+    title: "Drill Packaging",
     description: "Product sticker design for a Hardware product",
     image: projectProduct2,
     tags: ["Stickers", "Product Design", "Branding"]
   },
   {
     id: 3,
-    title: "Hardware Items Packaging",
+    title: "Electric Hoist Packaging",
     description: "Premium product packaging design for Hardware line",
     image: projectProduct3,
-    tags: ["Packaging", "Branding", "Product Design"]
+    tags: ["Packaging", "Branding", "Product Design"],
+    span: "col-span-2"
   },
   {
     id: 4,
-    title: "Hardware Items Packaging",
+    title: "Dry wall screw Packaging",
     description: "Product sticker design for a Hardware product",
     image: projectProduct4,
-    tags: ["Stickers", "Product Design", "Branding"]
+    tags: ["Stickers", "Product Design", "Branding"],
+    span: "col-span-2"
   },
   {
     id: 5,
-    title: "Hardware Items Packaging",
+    title: "Gas Regulator Packaging",
     description: "Premium product packaging design for Hardware line",
     image: projectProduct5,
-    tags: ["Packaging", "Branding", "Product Design"]
+    tags: ["Packaging", "Branding", "Product Design"],
+    span: "col-span-2"
   },
   {
     id: 6,
-    title: "Hardware Items Packaging",
+    title: "Vaccum Cleaner Packaging",
     description: "Product sticker design for a Hardware product",
     image: projectProduct6,
     tags: ["Stickers", "Product Design", "Branding"]
@@ -76,6 +93,42 @@ const itemVariants = {
 };
 
 const ProductDesign = () => {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'start' });
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect();
+    emblaApi.on('select', onSelect);
+  }, [emblaApi, onSelect]);
+
+  // Auto-slide functionality
+  useEffect(() => {
+    if (!emblaApi || isPaused) return;
+
+    const interval = setInterval(() => {
+      if (emblaApi) {
+        emblaApi.scrollNext();
+      }
+    }, 3000); // Change slide every 3 seconds
+
+    return () => clearInterval(interval);
+  }, [emblaApi, isPaused]);
+
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation Header */}
@@ -87,7 +140,7 @@ const ProductDesign = () => {
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <Link 
-              to="https://www.facebook.com/share/1GNEhQrhSP/?mibextid=wwXIfr"
+              to="/"
               className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
             >
               <ArrowLeft size={20} />
@@ -147,7 +200,7 @@ const ProductDesign = () => {
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.5 }}
                   whileHover={{ y: -5 }}
-                  className="group glass rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300"
+                  className={`group glass rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300 ${project.span || ''}`}
                 >
                   <div className="relative overflow-hidden">
                     <motion.img
@@ -156,7 +209,7 @@ const ProductDesign = () => {
                       loading="lazy"
                       width={800}
                       height={800}
-                      className="w-full aspect-square object-cover"
+                      className={`w-full ${project.span ? 'aspect-video' : 'aspect-square'} object-cover`}
                       whileHover={{ scale: 1.1 }}
                       transition={{ duration: 0.5 }}
                     />
@@ -217,6 +270,88 @@ const ProductDesign = () => {
               ))}
             </AnimatePresence>
           </motion.div>
+        </div>
+      </motion.section>
+
+      {/* Real Product Images Slider Section */}
+      <motion.section
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="pb-24"
+      >
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <p className="text-primary font-medium tracking-widest uppercase text-sm mb-2">Gallery</p>
+            <h2 className="font-display text-4xl md:text-5xl font-bold mb-6">
+              Real <span className="text-gradient">Product Images</span>
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+              Explore our actual product photography showcasing the real-world application of our design work.
+            </p>
+          </motion.div>
+
+          {/* Carousel */}
+          <div 
+            className="relative max-w-4xl mx-auto"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
+            <div className="embla overflow-hidden" ref={emblaRef}>
+              <div className="embla__container flex gap-4">
+                {realProductImages.map((image, index) => (
+                  <div key={index} className="embla__slide flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.333%]">
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.1 }}
+                      className="glass rounded-2xl overflow-hidden p-2"
+                    >
+                      <img
+                        src={image}
+                        alt={`Real Product ${index + 1}`}
+                        className="w-full h-64 object-cover rounded-xl"
+                      />
+                    </motion.div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Navigation Buttons */}
+            <button
+              onClick={scrollPrev}
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-primary/90 backdrop-blur-sm text-primary-foreground flex items-center justify-center hover:bg-primary transition-colors z-10"
+            >
+              <ChevronLeft size={24} />
+            </button>
+            <button
+              onClick={scrollNext}
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-primary/90 backdrop-blur-sm text-primary-foreground flex items-center justify-center hover:bg-primary transition-colors z-10"
+            >
+              <ChevronRight size={24} />
+            </button>
+
+            {/* Dots */}
+            <div className="flex justify-center gap-2 mt-6">
+              {realProductImages.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => emblaApi?.scrollTo(index)}
+                  className={`w-2 h-2 rounded-full transition-all ${
+                    selectedIndex === index ? 'bg-primary w-6' : 'bg-primary/30'
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </motion.section>
     </div>
